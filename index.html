@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PDF 整合工具</title>
+<title>PDF �游�撌亙</title>
 <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
 <script src="https://unpkg.com/sortablejs@1.15.0/Sortable.min.js"></script>
 <script src="https://unpkg.com/mammoth@1.6.0/mammoth.browser.min.js"></script>
@@ -18,7 +18,7 @@
 body{background:var(--bg);color:var(--text);font-family:"Microsoft JhengHei","Segoe UI",Arial,sans-serif;font-size:13px;min-height:100vh}
 a{color:var(--blue)}
 
-/* ── 版面 ── */
+/* �� � �� */
 .app{display:flex;flex-direction:column;height:100vh;max-width:1200px;margin:0 auto;padding:12px;gap:10px}
 .header{display:flex;align-items:baseline;gap:12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
 .header h1{font-size:20px;color:var(--blue);font-weight:bold}
@@ -28,10 +28,10 @@ a{color:var(--blue)}
 .right{flex:4;display:flex;flex-direction:column;min-width:280px}
 .bottom{display:flex;align-items:center;gap:8px;padding-top:8px;border-top:1px solid var(--border)}
 
-/* ── 面板標題 ── */
+/* �� �Ｘ璅� �� */
 .panel-title{font-weight:bold;color:var(--text2);margin-bottom:4px;font-size:13px}
 
-/* ── 按鈕 ── */
+/* �� �� �� */
 button{background:var(--blue);color:#fff;border:none;border-radius:4px;padding:5px 14px;cursor:pointer;font-size:13px;font-family:inherit;font-weight:bold;transition:background .15s}
 button:hover{background:var(--blue2)}
 button:disabled{background:#444;color:#777;cursor:not-allowed}
@@ -42,7 +42,7 @@ button.success:hover{background:#2ecc71}
 button.sm{padding:3px 10px;font-size:12px;font-weight:normal}
 button.icon{padding:4px 8px;font-size:12px;min-width:30px;font-weight:normal}
 
-/* ── 檔案清單 ── */
+/* �� 瑼�皜 �� */
 .file-zone{flex:1;border:2px dashed var(--border);border-radius:6px;overflow-y:auto;min-height:120px;position:relative;transition:border-color .2s}
 .file-zone.dragover{border-color:var(--blue);background:rgba(74,144,217,.07)}
 .file-zone-hint{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--text3);font-size:13px;gap:6px;pointer-events:none}
@@ -61,11 +61,11 @@ button.icon{padding:4px 8px;font-size:12px;min-width:30px;font-weight:normal}
 .file-item .del{background:none;border:none;color:var(--text3);font-size:14px;cursor:pointer;padding:2px 5px;border-radius:3px}
 .file-item .del:hover{color:var(--red);background:rgba(192,57,43,.15)}
 
-/* ── 工具列 ── */
+/* �� 撌亙�� �� */
 .toolbar{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
 .file-count{margin-left:auto;color:var(--text3);font-size:12px}
 
-/* ── Tabs ── */
+/* �� Tabs �� */
 .tabs{display:flex;border-bottom:1px solid var(--border);margin-bottom:8px}
 .tab{padding:7px 14px;cursor:pointer;color:var(--text2);border-bottom:2px solid transparent;font-size:13px;transition:all .15s}
 .tab.active{color:var(--blue);border-bottom-color:var(--blue)}
@@ -73,7 +73,7 @@ button.icon{padding:4px 8px;font-size:12px;min-width:30px;font-weight:normal}
 .tab-panel{display:none;flex-direction:column;gap:10px;flex:1;overflow-y:auto}
 .tab-panel.active{display:flex}
 
-/* ── 表單控件 ── */
+/* �� 銵典�找辣 �� */
 .form-row{display:flex;align-items:center;gap:8px}
 .form-row label{min-width:80px;color:var(--text2);text-align:right;font-size:12px}
 .form-row select,.form-row input[type=number],.form-row input[type=text]{background:var(--surface2);border:1px solid var(--border);border-radius:4px;color:var(--text);padding:4px 8px;font-size:13px;font-family:inherit}
@@ -85,7 +85,7 @@ button.icon{padding:4px 8px;font-size:12px;min-width:30px;font-weight:normal}
 .chk-row{display:flex;align-items:center;gap:6px;cursor:pointer;color:var(--text2);font-size:13px}
 .chk-row input{cursor:pointer}
 
-/* ── 書籤表格 ── */
+/* �� �貊惜銵冽 �� */
 .bm-input{display:flex;gap:6px;align-items:center}
 .bm-input input[type=text]{flex:1;background:var(--surface2);border:1px solid var(--border);border-radius:4px;color:var(--text);padding:4px 8px;font-family:inherit;font-size:13px}
 .bm-input input[type=text]:focus{outline:none;border-color:var(--blue)}
@@ -95,31 +95,31 @@ button.icon{padding:4px 8px;font-size:12px;min-width:30px;font-weight:normal}
 .bm-table tr:hover td{background:var(--surface2)}
 .bm-scroll{max-height:180px;overflow-y:auto;border:1px solid var(--border);border-radius:4px}
 
-/* ── 預覽 ── */
+/* �� �汗 �� */
 .preview-wrap{display:flex;flex-direction:column;align-items:center}
 canvas#previewCanvas{border:1px solid var(--border);border-radius:3px;max-width:100%}
 .preview-hint{font-size:11px;color:var(--text3);margin-top:4px}
 
-/* ── 壓縮面板 ── */
+/* �� 憯葬�Ｘ �� */
 .compress-result{border-radius:4px;padding:8px 12px;font-size:12px;text-align:center;min-height:40px}
 .compress-result.ok{background:rgba(39,174,96,.12);color:#2ecc71}
 .compress-result.neutral{background:var(--surface2);color:var(--text2)}
 .compress-info{list-style:none;display:flex;flex-direction:column;gap:3px}
 .compress-info li{color:var(--text2);font-size:12px}
-.compress-info li::before{content:"✓  ";color:var(--green)}
+.compress-info li::before{content:"��  ";color:var(--green)}
 
-/* ── 進度 ── */
+/* �� �脣漲 �� */
 .progress-bar{height:5px;background:var(--surface2);border-radius:3px;overflow:hidden;flex:1}
 .progress-fill{height:100%;background:linear-gradient(90deg,var(--blue),var(--green));border-radius:3px;transition:width .3s;width:0}
 .status-text{font-size:12px;color:var(--text2);min-width:0;flex:1}
 
-/* ── 訊息 ── */
+/* �� 閮 �� */
 .toast{position:fixed;bottom:20px;right:20px;background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:10px 16px;font-size:13px;max-width:340px;box-shadow:0 4px 20px rgba(0,0,0,.5);z-index:999;transition:opacity .3s}
 .toast.warn{border-color:var(--yellow);color:var(--yellow)}
 .toast.err{border-color:var(--red);color:#e74c3c}
 .toast.ok{border-color:var(--green);color:#2ecc71}
 
-/* ── 限制說明 ── */
+/* �� �隤芣� �� */
 .notice{background:rgba(243,156,18,.08);border:1px solid rgba(243,156,18,.3);border-radius:4px;padding:7px 10px;font-size:11px;color:#f39c12;line-height:1.5}
 
 @media(max-width:700px){
@@ -131,139 +131,139 @@ canvas#previewCanvas{border:1px solid var(--border);border-radius:3px;max-width:
 <body>
 <div class="app">
 
-  <!-- 標題 -->
+  <!-- 璅� -->
   <div class="header">
-    <h1>PDF 整合工具</h1>
-    <p>將 PDF / 圖片 / Word 合併為單一 PDF，支援頁碼與書籤目錄 · 完全在瀏覽器內執行</p>
+    <h1>PDF �游�撌亙</h1>
+    <p>撠� PDF / �� / Word �蔥�箏銝 PDF嚗�湧�蝣潸��貊惜�桅� 繚 摰�函汗�典�瑁�</p>
   </div>
 
   <div class="main">
-    <!-- ── 左側：檔案清單 ── -->
+    <!-- �� 撌血嚗�獢��� �� -->
     <div class="left">
-      <div class="panel-title">📂 檔案清單</div>
+      <div class="panel-title">�� 瑼�皜</div>
       <div class="toolbar">
-        <button onclick="openFilePicker()">＋ 新增檔案</button>
-        <button class="danger sm" onclick="removeSelected()" id="btnRemove" disabled>✕ 移除</button>
-        <button class="icon" onclick="moveUp()" id="btnUp" disabled title="上移">▲</button>
-        <button class="icon" onclick="moveDown()" id="btnDown" disabled title="下移">▼</button>
-        <span class="file-count" id="fileCount">尚未新增檔案</span>
+        <button onclick="openFilePicker()">嚗� �啣�瑼�</button>
+        <button class="danger sm" onclick="removeSelected()" id="btnRemove" disabled>�� 蝘駁</button>
+        <button class="icon" onclick="moveUp()" id="btnUp" disabled title="銝宏">��</button>
+        <button class="icon" onclick="moveDown()" id="btnDown" disabled title="銝宏">��</button>
+        <span class="file-count" id="fileCount">撠�啣�瑼�</span>
       </div>
       <div class="file-zone" id="dropZone">
         <div class="file-zone-hint" id="zoneHint">
-          <span class="icon">📂</span>
-          <span>拖曳檔案到此處，或點擊「新增檔案」</span>
-          <span style="font-size:11px">支援格式：PDF · JPG · PNG · DOCX</span>
+          <span class="icon">��</span>
+          <span>�瑼��唳迨�����憓�獢�</span>
+          <span style="font-size:11px">�舀�澆�嚗DF 繚 JPG 繚 PNG 繚 DOCX</span>
         </div>
         <ul id="fileList"></ul>
       </div>
       <input type="file" id="fileInput" multiple accept=".pdf,.jpg,.jpeg,.png,.docx" style="display:none">
     </div>
 
-    <!-- ── 右側：設定 ── -->
+    <!-- �� �喳嚗身摰� �� -->
     <div class="right">
-      <div class="panel-title">⚙️ 輸出設定</div>
+      <div class="panel-title">�� 頛詨閮剖�</div>
       <div class="tabs">
-        <div class="tab active" onclick="switchTab('pn')">🔢 頁碼</div>
-        <div class="tab" onclick="switchTab('bm')">📌 書籤</div>
-        <div class="tab" onclick="switchTab('cmp')">📦 壓縮</div>
+        <div class="tab active" onclick="switchTab('pn')">� �Ⅳ</div>
+        <div class="tab" onclick="switchTab('bm')">�� �貊惜</div>
+        <div class="tab" onclick="switchTab('cmp')">� 憯葬</div>
       </div>
 
-      <!-- 頁碼設定 -->
+      <!-- �Ⅳ閮剖� -->
       <div class="tab-panel active" id="tab-pn">
-        <label class="chk-row"><input type="checkbox" id="pnEnabled" checked onchange="updatePreview()"> 啟用頁碼</label>
+        <label class="chk-row"><input type="checkbox" id="pnEnabled" checked onchange="updatePreview()"> ��Ⅳ</label>
         <div id="pnSettings">
-          <div class="form-row"><label>起始頁碼</label><input type="number" id="pnStart" value="1" min="0" max="9999" onchange="updatePreview()"></div>
-          <div class="form-row"><label>樣式</label>
+          <div class="form-row"><label>韏瑕��Ⅳ</label><input type="number" id="pnStart" value="1" min="0" max="9999" onchange="updatePreview()"></div>
+          <div class="form-row"><label>璅��</label>
             <select id="pnStyle" onchange="updatePreview()">
-              <option value="n">純數字（1, 2, 3）</option>
-              <option value="dash">破折號（- 1 -）</option>
-              <option value="page_of">英文（Page 1 of N）</option>
-              <option value="roman">羅馬數字（i, ii, iii）</option>
+              <option value="n">蝝摮�1, 2, 3嚗�</option>
+              <option value="dash">�湔���- 1 -嚗�</option>
+              <option value="page_of">�望�嚗age 1 of N嚗�</option>
+              <option value="roman">蝢收�詨�嚗, ii, iii嚗�</option>
             </select>
           </div>
-          <div class="form-row"><label>垂直位置</label>
+          <div class="form-row"><label>�雿蔭</label>
             <select id="pnV" onchange="updatePreview()">
-              <option value="bottom">頁尾</option>
-              <option value="top">頁首</option>
+              <option value="bottom">�偏</option>
+              <option value="top">��</option>
             </select>
           </div>
-          <div class="form-row"><label>水平位置</label>
+          <div class="form-row"><label>瘞游像雿蔭</label>
             <select id="pnH" onchange="updatePreview()">
-              <option value="center">置中</option>
-              <option value="left">靠左</option>
-              <option value="right">靠右</option>
+              <option value="center">蝵桐葉</option>
+              <option value="left">�椰</option>
+              <option value="right">�</option>
             </select>
           </div>
-          <div class="form-row"><label>字體大小</label><input type="number" id="pnSize" value="11" min="6" max="36" onchange="updatePreview()"> pt</div>
-          <div class="form-row"><label>距邊緣</label><input type="number" id="pnMargin" value="20" min="5" max="100" onchange="updatePreview()"> pt</div>
+          <div class="form-row"><label>摮�憭批�</label><input type="number" id="pnSize" value="11" min="6" max="36" onchange="updatePreview()"> pt</div>
+          <div class="form-row"><label>頝�蝺�</label><input type="number" id="pnMargin" value="20" min="5" max="100" onchange="updatePreview()"> pt</div>
         </div>
         <div class="preview-wrap">
           <canvas id="previewCanvas" width="120" height="170"></canvas>
-          <div class="preview-hint">黃色區域為頁碼位置</div>
+          <div class="preview-hint">暺���Ⅳ雿蔭</div>
         </div>
       </div>
 
-      <!-- 書籤設定 -->
+      <!-- �貊惜閮剖� -->
       <div class="tab-panel" id="tab-bm">
-        <div style="color:var(--text2);font-size:12px">新增書籤後，讀者可在 PDF 側邊欄點擊跳頁。</div>
+        <div style="color:var(--text2);font-size:12px">�啣��貊惜敺�霈��� PDF �湧�甈��歲��</div>
         <div class="bm-input">
-          <input type="text" id="bmTitle" placeholder="書籤名稱（如：第一章）">
-          <input type="number" id="bmPage" value="1" min="1" style="width:60px" title="頁碼">
+          <input type="text" id="bmTitle" placeholder="�貊惜�迂嚗�嚗洵$�蝡�">
+          <input type="number" id="bmPage" value="1" min="1" style="width:60px" title="�Ⅳ">
           <select id="bmLevel" style="background:var(--surface2);border:1px solid var(--border);color:var(--text);border-radius:4px;padding:4px 6px;font-size:12px">
-            <option value="1">第一層</option>
-            <option value="2">　第二層</option>
+            <option value="1">諡砌�撅�</option>
+            <option value="2">�蝚砌�撅�</option>
           </select>
-          <button class="sm" onclick="addBookmark()">新增</button>
+          <button class="sm" onclick="addBookmark()">�啣�</button>
         </div>
         <div class="bm-scroll">
           <table class="bm-table">
-            <thead><tr><th>書籤名稱</th><th style="width:50px">頁碼</th><th style="width:60px">層級</th><th style="width:30px"></th></tr></thead>
+            <thead><tr><th>�貊惜�迂</th><th style="width:50px">�Ⅳ</th><th style="width:60px">撅斤�</th><th style="width:30px"></th></tr></thead>
             <tbody id="bmBody"></tbody>
           </table>
         </div>
         <div style="display:flex;gap:6px">
-          <button class="sm danger" onclick="clearBookmarks()">全部清除</button>
+          <button class="sm danger" onclick="clearBookmarks()">�券皜</button>
         </div>
       </div>
 
-      <!-- 壓縮設定 -->
+      <!-- 憯葬閮剖� -->
       <div class="tab-panel" id="tab-cmp">
-        <label class="chk-row"><input type="checkbox" id="cmpEnabled" checked> 產生後自動壓縮</label>
+        <label class="chk-row"><input type="checkbox" id="cmpEnabled" checked> �Ｙ�敺��蝮�</label>
         <ul class="compress-info">
-          <li>移除未使用的物件與重複資源</li>
-          <li>重新壓縮文字與字型串流</li>
-          <li>不重壓圖片（JPEG/PNG 保持原壓縮）</li>
-          <li>若壓縮後反而更大，自動還原原始大小</li>
+          <li>蝘駁�芯蝙�函��拐辣��銴�皞�</li>
+          <li>�憯葬�����葡瘚�</li>
+          <li>銝�憯���JPEG/PNG 靽���蝮殷�</li>
+          <li>�亙�蝮桀��憭改��芸�����憭批�</li>
         </ul>
-        <div class="compress-result neutral" id="cmpResult">（產生 PDF 後顯示壓縮結果）</div>
+        <div class="compress-result neutral" id="cmpResult">嚗�� PDF 敺＊蝷箏�蝮桃���</div>
       </div>
     </div>
   </div>
 
-  <!-- 底部 -->
+  <!-- 摨 -->
   <div class="bottom">
     <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-    <div class="status-text" id="statusText">就緒</div>
-    <button class="danger sm" onclick="clearAll()">🗑 清除</button>
-    <button class="success" onclick="generate()" id="btnGenerate" disabled>▶ 產生 PDF</button>
+    <div class="status-text" id="statusText">撠梁�</div>
+    <button class="danger sm" onclick="clearAll()">�� 皜</button>
+    <button class="success" onclick="generate()" id="btnGenerate" disabled>�� �Ｙ� PDF</button>
   </div>
 </div>
 
 <script>
-// ════════════════════════════════════════════════
-//  狀態
-// ════════════════════════════════════════════════
+// ������������������������������������������������
+//  ���
+// ������������������������������������������������
 let files = [];        // { file, name, type, skipPn }
 let selectedIdx = -1;
 let bookmarks = [];    // { title, page, level }
 let busy = false;
 
-const ICONS = { pdf:'📕', docx:'📄', jpg:'🖼', jpeg:'🖼', png:'🖼' };
+const ICONS = { pdf:'��', docx:'��', jpg:'�', jpeg:'�', png:'�' };
 const ext = f => f.name.split('.').pop().toLowerCase();
 
-// ════════════════════════════════════════════════
-//  檔案管理
-// ════════════════════════════════════════════════
+// ������������������������������������������������
+//  瑼�蝞∠�
+// ������������������������������������������������
 document.getElementById('fileInput').onchange = e => addFiles([...e.target.files]);
 
 const dropZone = document.getElementById('dropZone');
@@ -304,15 +304,15 @@ function renderList(){
     const sz = (item.file.size/1024).toFixed(0);
     li.innerHTML = `
       <span class="idx">${i+1}</span>
-      <span class="ico">${ICONS[item.type]||'📎'}</span>
+      <span class="ico">${ICONS[item.type]||'��'}|/span>
       <span class="info">
         <div class="fname" title="${item.name}">${item.name}</div>
-        <div class="fmeta">${item.type.toUpperCase()} · ${sz} KB</div>
+        <div class="fmeta">${item.type.toUpperCase()} 繚 ${sz} KB</div>
       </span>
-      <label class="skip-label" title="跳過頁碼（封面、目錄等）">
-        <input type="checkbox" ${item.skipPn?'checked':''} onchange="toggleSkip(${i},this.checked)"> 跳過頁碼
+      <label class="skip-label" title="頝喲��Ⅳ嚗��Ｕ��嚗�">
+        <input type="checkbox" ${item.skipPn?'checked':''} onchange="toggleSkip(${i},this.checked)"> 頝喲��Ⅳ
       </label>
-      <button class="del" onclick="removeAt(${i})" title="移除">✕</button>`;
+      <button class="del" onclick="removeAt(${i})" title="蝘駁">��</button>`;
     li.onclick = e => { if(e.target.tagName!=='INPUT'&&e.target.tagName!=='BUTTON'){ selectItem(i); } };
     ul.appendChild(li);
   });
@@ -352,13 +352,13 @@ function moveDown(){
 
 function clearAll(){
   if(!files.length) return;
-  if(!confirm('確定要清除所有檔案？')) return;
+  if(!confirm('蝣箏�閬��斗���獢�')) return;
   files=[]; selectedIdx=-1; renderList();
 }
 
 function updateCount(){
   document.getElementById('fileCount').textContent =
-    files.length ? `共 ${files.length} 個檔案` : '尚未新增檔案';
+    files.length ? `�� ${files.length} ��獢 : '撠�啣�瑼�';
   document.getElementById('btnGenerate').disabled = !files.length || busy;
 }
 
@@ -369,7 +369,7 @@ function updateButtons(){
   document.getElementById('btnDown').disabled = !has || selectedIdx===files.length-1;
 }
 
-// 拖拉排序
+// ����
 Sortable.create(document.getElementById('fileList'),{
   animation:150, ghostClass:'sortable-ghost',
   onEnd: e => {
@@ -380,9 +380,9 @@ Sortable.create(document.getElementById('fileList'),{
   }
 });
 
-// ════════════════════════════════════════════════
-//  書籤管理
-// ════════════════════════════════════════════════
+// ������������������������������������������������
+//  �貊惜蝞∠�
+// ������������������������������������������������
 function addBookmark(){
   const title = document.getElementById('bmTitle').value.trim();
   if(!title) return;
@@ -394,7 +394,7 @@ function addBookmark(){
 }
 
 function removeBookmark(i){ bookmarks.splice(i,1); renderBookmarks(); }
-function clearBookmarks(){ if(bookmarks.length&&confirm('清除所有書籤？')){ bookmarks=[]; renderBookmarks(); } }
+function clearBookmarks(){ if(bookmarks.length&&confirm('皜��蝐歹�')){ bookmarks=[]; renderBookmarks(); } }
 
 function renderBookmarks(){
   const tbody = document.getElementById('bmBody');
@@ -402,17 +402,17 @@ function renderBookmarks(){
   bookmarks.forEach((bm,i)=>{
     const tr=document.createElement('tr');
     tr.innerHTML=`
-      <td>${(bm.level===2?'　﹒':'')}${bm.title}</td>
+      <td>${(bm.level===2?'�儮�':'')}${bm.title}</td>
       <td>${bm.page}</td>
-      <td style="color:var(--text3)">${bm.level===1?'第一層':'第二層'}</td>
-      <td><button class="del" onclick="removeBookmark(${i})">✕</button></td>`;
+      <td style="color:var(--text3)">${bm.level===1?'蝚砌�撅�':'蝚砌�撅�'}</td>
+      <td><button class="del" onclick="removeBookmark(${i})">��</button></td>`;
     tbody.appendChild(tr);
   });
 }
 
-// ════════════════════════════════════════════════
-//  頁碼預覽
-// ════════════════════════════════════════════════
+// ������������������������������������������������
+//  �Ⅳ�汗
+// ������������������������������������������������
 function updatePreview(){
   const enabled = document.getElementById('pnEnabled').checked;
   document.getElementById('pnSettings').style.opacity = enabled ? '1' : '0.4';
@@ -423,11 +423,11 @@ function updatePreview(){
   const W=120, H=170;
   ctx.clearRect(0,0,W,H);
 
-  // 頁面背景
+  // ��
   ctx.fillStyle='#fff'; ctx.fillRect(4,4,W-8,H-8);
   ctx.strokeStyle='#888'; ctx.lineWidth=1; ctx.strokeRect(4,4,W-8,H-8);
 
-  // 模擬文字行
+  // 璅⊥��銵�
   ctx.strokeStyle='#ddd'; ctx.lineWidth=0.8;
   for(let i=0;i<16;i++){
     const y=20+i*9;
@@ -459,7 +459,7 @@ function updatePreview(){
   else if(hPos==='right') x = 4+pw-tw-6;
   else x = 4+(pw-tw)/2;
 
-  // 黃色背景
+  // 暺�
   ctx.fillStyle='rgba(255,230,80,0.85)';
   ctx.fillRect(x-3, y-scaledFs-2, tw+6, scaledFs+6);
   ctx.fillStyle='#333';
@@ -482,9 +482,9 @@ function toRoman(n){
 
 updatePreview();
 
-// ════════════════════════════════════════════════
-//  Tab 切換
-// ════════════════════════════════════════════════
+// ������������������������������������������������
+//  Tab ��
+// ������������������������������������������������
 function switchTab(name){
   document.querySelectorAll('.tab').forEach((t,i)=>{
     const names=['pn','bm','cmp'];
@@ -495,9 +495,9 @@ function switchTab(name){
   });
 }
 
-// ════════════════════════════════════════════════
-//  進度 / 狀態
-// ════════════════════════════════════════════════
+// ������������������������������������������������
+//  �脣漲 / ���
+// ������������������������������������������������
 function setProgress(pct, msg){
   document.getElementById('progressFill').style.width = pct+'%';
   document.getElementById('statusText').textContent = msg||'';
@@ -511,27 +511,27 @@ function toast(msg, type='', dur=4000){
   setTimeout(()=>{ el.style.opacity='0'; setTimeout(()=>el.remove(),300); },dur);
 }
 
-// ════════════════════════════════════════════════
-//  核心：產生 PDF
-// ════════════════════════════════════════════════
+// ������������������������������������������������
+//  �詨�嚗�� PDF
+// ������������������������������������������������
 async function generate(){
   if(!files.length||busy) return;
   busy=true;
   document.getElementById('btnGenerate').disabled=true;
   document.getElementById('cmpResult').className='compress-result neutral';
-  document.getElementById('cmpResult').textContent='處理中…';
-  setProgress(0,'正在初始化…');
+  document.getElementById('cmpResult').textContent='��銝凌�';
+  setProgress(0,'甇�����');
 
   try {
     const { PDFDocument, rgb, degrees, StandardFonts } = PDFLib;
     const mergedDoc = await PDFDocument.create();
-    // 記錄每組檔案的起始頁碼（用於計算 skip 頁）
+    // 閮�瘥�瑼��絲憪�蝣潘��冽閮� skip ��
     const skipPageSet = new Set();
     let pageOffset = 0;
 
     for(let i=0;i<files.length;i++){
       const item = files[i];
-      setProgress(Math.round(i/files.length*70), `轉換 (${i+1}/${files.length})：${item.name}`);
+      setProgress(Math.round(i/files.length*70), `頧� (${i+1}/${files.length})嚗�${item.name}`);
 
       const pagesAdded = await appendFile(mergedDoc, item);
 
@@ -542,9 +542,9 @@ async function generate(){
     }
 
     const totalPages = mergedDoc.getPageCount();
-    setProgress(75,'疊加頁碼…');
+    setProgress(75,'���Ⅳ��');
 
-    // ── 頁碼 ──────────────────────────────────────
+    // �� �Ⅳ ��������������������������������������
     if(document.getElementById('pnEnabled').checked){
       const font = await mergedDoc.embedFont(StandardFonts.Helvetica);
       const style  = document.getElementById('pnStyle').value;
@@ -571,26 +571,26 @@ async function generate(){
       });
     }
 
-    setProgress(85,'設定書籤…');
+    setProgress(85,'閮剖��貊惜��');
 
-    // ── 書籤（Outline）─────────────────────────────
+    // �� �貊惜嚗utline嚗�����������������������������
     if(bookmarks.length){
       addOutline(mergedDoc, bookmarks, totalPages);
     }
 
-    setProgress(92,'儲存 PDF…');
+    setProgress(92,'�脣� PDF��');
 
-    // ── 儲存 ──────────────────────────────────────
+    // �� �脣� ��������������������������������������
     const saveOpts = { useObjectStreams: true };
     let pdfBytes = await mergedDoc.save(saveOpts);
     const originalSize = pdfBytes.byteLength;
 
-    // ── 壓縮（重新整理物件串流）────────────────────
+    // �� 憯葬嚗��唳�隞嗡葡瘚���������������������
     if(document.getElementById('cmpEnabled').checked){
-      setProgress(96,'壓縮…');
+      setProgress(96,'憯葬��');
       try {
-        // pdf-lib 的 useObjectStreams 本身已是最佳壓縮
-        // 額外嘗試：重新載入後再儲存，清除冗餘
+        // pdf-lib �� useObjectStreams �祈澈撌脫�雿喳�蝮�
+        // 憿��岫嚗��啗��亙��摮�皜��
         const reloaded = await PDFDocument.load(pdfBytes);
         const compressed = await reloaded.save({ useObjectStreams: true, addDefaultPage: false });
         const compSize = compressed.byteLength;
@@ -605,9 +605,9 @@ async function generate(){
       }
     }
 
-    setProgress(100,'完成！');
+    setProgress(100,'摰�嚗�');
 
-    // ── 下載 ──────────────────────────────────────
+    // �� 銝� ��������������������������������������
     const blob = new Blob([pdfBytes],{type:'application/pdf'});
     const url  = URL.createObjectURL(blob);
     const a    = document.createElement('a');
@@ -617,26 +617,34 @@ async function generate(){
     URL.revokeObjectURL(url);
 
     const finalKB = (pdfBytes.byteLength/1024).toFixed(1);
-    toast(`✅ 完成！下載中（${finalKB} KB）`,'ok');
-    setProgress(100,`✅ 完成！${finalKB} KB`);
+    toast(`�� 摰�嚗�頛葉嚗�${finalKB} KB嚗,'ok');
+    setProgress(100,`�� 摰�嚗�${finalKB} KB`);
 
   } catch(e){
     console.error(e);
-    toast(`❌ 錯誤：${e.message}`,'err',8000);
-    setProgress(0,'❌ 發生錯誤');
+    toast(`�� �航炊嚗�${e.message}`,'err',8000);
+    setProgress(0,'�� �潛��航炊');
   }
 
   busy=false;
   document.getElementById('btnGenerate').disabled=false;
 }
 
-// ── 將單一檔案加入 PDFDocument，回傳加入的頁數 ──
+// �� 撠銝瑼�� PDFDocument嚗��喳��亦�� ��
 async function appendFile(mergedDoc, item){
   const { PDFDocument, rgb } = PDFLib;
   const buf = await item.file.arrayBuffer();
 
   if(item.type==='pdf'){
-    const src = await PDFDocument.load(buf, { ignoreEncryption: true });
+    let src = null, isProtected = false;
+    try {
+      src = await PDFDocument.load(buf, { ignoreEncryption: true });
+      isProtected = src.context.trailer.get(PDFLib.PDFName.of('Encrypt')) !== undefined;
+    } catch(e) { isProtected = true; }
+    if(isProtected){
+      toast(`⚠️ 偵測到受保護的 PDF，改用備用渲染模式：${item.name}`, 'warn', 4000);
+      return await appendPdfViaPdfjs(mergedDoc, buf);
+    }
     const indices = src.getPageIndices();
     const copied  = await mergedDoc.copyPages(src, indices);
     copied.forEach(p => mergedDoc.addPage(p));
@@ -662,6 +670,34 @@ async function appendFile(mergedDoc, item){
   return 0;
 }
 
+async function appendPdfViaPdfjs(mergedDoc, buf){
+  if(!window.pdfjsLib){
+    await new Promise((res,rej)=>{
+      const s=document.createElement('script');
+      s.src='https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.min.js';
+      s.onload=res; s.onerror=rej;
+      document.head.appendChild(s);
+    });
+    pdfjsLib.GlobalWorkerOptions.workerSrc='https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js';
+  }
+  const pdfDoc=(await pdfjsLib.getDocument({data:new Uint8Array(buf)}).promise);
+  const n=pdfDoc.numPages;
+  for(let i=1;i<=n;i++){
+    const page=await pdfDoc.getPage(i);
+    const vp=page.getViewport({scale:2.0});
+    const cv=document.createElement('canvas');
+    cv.width=vp.width; cv.height=vp.height;
+    const ctx=cv.getContext('2d');
+    ctx.fillStyle='#fff'; ctx.fillRect(0,0,cv.width,cv.height);
+    await page.render({canvasContext:ctx,viewport:vp}).promise;
+    const b64=cv.toDataURL('image/jpeg',0.92).split(',')[1];
+    const bytes=Uint8Array.from(atob(b64),c=>c.charCodeAt(0));
+    const img=await mergedDoc.embedJpg(bytes.buffer);
+    const pw=vp.width/2, ph=vp.height/2;
+    mergedDoc.addPage([pw,ph]).drawImage(img,{x:0,y:0,width:pw,height:ph});
+  }
+  return n;
+}
 function addImagePage(doc, img){
   const A4 = {w:595,h:842};
   const scale = Math.min(A4.w/img.width, A4.h/img.height);
@@ -674,13 +710,13 @@ function addImagePage(doc, img){
   return page;
 }
 
-// Word 轉換（mammoth.js HTML → Canvas → PDF 圖片）
+// Word 頧�嚗ammoth.js HTML �� Canvas �� PDF ��嚗�
 async function appendDocx(doc, buf, fname){
   try {
     const result = await mammoth.convertToHtml({arrayBuffer: buf});
     const html   = result.value;
 
-    // 建立隱藏 iframe 渲染 HTML
+    // 撱箇��梯� iframe 皜脫� HTML
     const iframe = document.createElement('iframe');
     iframe.style.cssText='position:fixed;left:-9999px;top:0;width:794px;height:1123px;border:none;background:#fff';
     document.body.appendChild(iframe);
@@ -692,9 +728,9 @@ async function appendDocx(doc, buf, fname){
       </style></head><body>${html}</body></html>`);
     iframe.contentDocument.close();
 
-    await new Promise(r=>setTimeout(r,300)); // 等渲染
+    await new Promise(r=>setTimeout(r,300)); // 蝑葡��
 
-    // 用 Canvas API 截圖（需要 html2canvas，此處用分頁方式處理）
+    // �� Canvas API �芸�嚗�閬� html2canvas嚗迨����孵���嚗�
     const bodyEl = iframe.contentDocument.body;
     const totalH = bodyEl.scrollHeight;
     const pageH  = 1123, pageW = 794;
@@ -708,7 +744,7 @@ async function appendDocx(doc, buf, fname){
       ctx.fillStyle = '#fff';
       ctx.fillRect(0,0,pageW,pageH);
 
-      // 用 foreignObject SVG 渲染（限同源）
+      // �� foreignObject SVG 皜脫�嚗���嚗�
       const svgData = `<svg xmlns="http://www.w3.org/2000/svg" width="${pageW}" height="${pageH}">
         <foreignObject width="100%" height="100%">
           <div xmlns="http://www.w3.org/1999/xhtml" style="width:${pageW}px;overflow:hidden;background:#fff">
@@ -719,7 +755,7 @@ async function appendDocx(doc, buf, fname){
       await new Promise((res,rej)=>{
         const img = new Image();
         img.onload = ()=>{ ctx.drawImage(img,0,0); res(); };
-        img.onerror = ()=>res(); // 失敗時跳過
+        img.onerror = ()=>res(); // 憭望��歲��
         img.src = 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svgData);
       });
 
@@ -734,8 +770,8 @@ async function appendDocx(doc, buf, fname){
     return numPages;
 
   } catch(e){
-    console.warn('DOCX 轉換失敗，插入說明頁：',e);
-    // 插入一頁說明
+    console.warn('DOCX 頧�憭望�嚗��亥牧��嚗�',e);
+    // �銝�牧��
     const { PDFDocument, rgb, StandardFonts } = PDFLib;
     const page = doc.addPage([595,842]);
     const font = await doc.embedFont(StandardFonts.Helvetica);
@@ -746,14 +782,14 @@ async function appendDocx(doc, buf, fname){
   }
 }
 
-// ── PDF 書籤（Outline）──────────────────────────
+// �� PDF �貊惜嚗utline嚗��������������������������
 function addOutline(doc, bms, totalPages){
   try {
     const { PDFName, PDFNumber, PDFArray, PDFDict, PDFRef } = PDFLib;
     const context = doc.context;
     const pages   = doc.getPages();
 
-    // 建立 outline 項目
+    // 撱箇� outline �
     const items = bms.map(bm=>{
       const pageIdx = Math.min(Math.max(bm.page-1,0), totalPages-1);
       const pageRef = pages[pageIdx].ref;
@@ -762,14 +798,14 @@ function addOutline(doc, bms, totalPages){
 
     if(!items.length) return;
 
-    // 建立 root
+    // 撱箇� root
     const outlineRoot = context.obj({
       Type: PDFName.of('Outlines'),
       Count: PDFNumber.of(items.length),
     });
     const rootRef = context.register(outlineRoot);
 
-    // 建立每個 item 的 dict
+    // 撱箇�瘥� item �� dict
     const itemRefs = items.map((it, i)=>{
       const dict = context.obj({
         Title: PDFLib.PDFHexString.fromText(it.title),
@@ -781,7 +817,7 @@ function addOutline(doc, bms, totalPages){
       return context.register(dict);
     });
 
-    // 串接
+    // 銝脫
     itemRefs.forEach((ref,i)=>{
       const dict = context.lookupMaybe(ref, PDFLib.PDFDict);
       if(!dict) return;
@@ -794,7 +830,7 @@ function addOutline(doc, bms, totalPages){
 
     doc.catalog.set(PDFName.of('Outlines'), rootRef);
   } catch(e){
-    console.warn('書籤設定失敗（不影響輸出）：',e);
+    console.warn('�貊惜閮剖�憭望�嚗�敶梢頛詨嚗�',e);
   }
 }
 
@@ -804,10 +840,10 @@ function showCompressResult(orig, comp){
   if(saved > 100){
     const pct = (saved/orig*100).toFixed(1);
     el.className='compress-result ok';
-    el.textContent=`壓縮完成！${fmtSize(orig)} → ${fmtSize(comp)}，節省 ${fmtSize(saved)}（${pct}%）`;
+    el.textContent=`憯葬摰�嚗�${fmtSize(orig)} �� ${fmtSize(comp)}嚗��� ${fmtSize(saved)}嚗�${pct}%嚗;
   } else {
     el.className='compress-result neutral';
-    el.textContent=`檔案已是最佳狀態，大小：${fmtSize(comp)}`;
+    el.textContent=`瑼�撌脫�雿喟���憭批�嚗�${fmtSize(comp)}`;
   }
 }
 
