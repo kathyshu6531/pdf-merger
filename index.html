@@ -861,52 +861,78 @@ async function appendDocx(doc, buf, fname){
 // ── PDF 書籤（Outline）──────────────────────────
 function addOutline(doc, bms, totalPages){
   try {
-    const { PDFName, PDFNumber, PDFArray, PDFDict, PDFRef } = PDFLib;
+    const { PDFName, PDFNumber } = PDFLib;
     const context = doc.context;
     const pages   = doc.getPages();
 
-    // 建立 outline 項目
-    const items = bms.map(bm=>{
-      const pageIdx = Math.min(Math.max(bm.page-1,0), totalPages-1);
-      const pageRef = pages[pageIdx].ref;
-      return { ...bm, pageRef };
-    });
+    if(!bms.length) return;
 
-    if(!items.length) return;
-
-    // 建立 root
-    const outlineRoot = context.obj({
-      Type: PDFName.of('Outlines'),
-      Count: PDFNumber.of(items.length),
-    });
+    // ── 建立 Outline root ───────────────────────────────────────
+    const outlineRoot = context.obj({ Type: PDFName.of('Outlines'), Count: PDFNumber.of(0) });
     const rootRef = context.register(outlineRoot);
 
-    // 建立每個 item 的 dict
-    const itemRefs = items.map((it, i)=>{
+    // helper：建立一個 outline item ref（尚未串接 Prev/Next）
+    function makeItemRef(bm, parentRef){
+      const pageIdx = Math.min(Math.max(bm.page-1, 0), totalPages-1);
+      const pageRef = pages[pageIdx].ref;
       const dict = context.obj({
-        Title: PDFLib.PDFHexString.fromText(it.title),
-        Parent: rootRef,
-        Dest: context.obj([it.pageRef, PDFName.of('XYZ'),
-          PDFLib.PDFNull, PDFLib.PDFNull, PDFLib.PDFNull]),
-        Count: PDFNumber.of(0),
+        Title: PDFLib.PDFHexString.fromText(bm.title),
+        Parent: parentRef,
+        Dest:   context.obj([pageRef, PDFName.of('XYZ'),
+                  PDFLib.PDFNull, PDFLib.PDFNull, PDFLib.PDFNull]),
+        Count:  PDFNumber.of(0),   // 負數=收合，正數=展開；先設0，子項目加入後再更新
       });
       return context.register(dict);
+    }
+
+    // helper：將一組 sibling refs 串起 Prev/Next，並設定 First/Last 到 parentDict
+    function linkSiblings(sibRefs, parentDict){
+      sibRefs.forEach((ref, i)=>{
+        const d = context.lookupMaybe(ref, PDFLib.PDFDict);
+        if(!d) return;
+        if(i > 0) d.set(PDFName.of('Prev'), sibRefs[i-1]);
+        if(i < sibRefs.length-1) d.set(PDFName.of('Next'), sibRefs[i+1]);
+      });
+      parentDict.set(PDFName.of('First'), sibRefs[0]);
+      parentDict.set(PDFName.of('Last'),  sibRefs[sibRefs.length-1]);
+    }
+
+    // ── 兩層結構：level=1 為父，level=2 為子 ───────────────────
+    // 先掃一遍，把 level=2 項目掛到前一個 level=1 底下
+    // 結構：[ { bm, children:[] }, ... ]
+    const topItems = [];
+    bms.forEach(bm=>{
+      if(bm.level === 1 || topItems.length === 0){
+        topItems.push({ bm, children:[] });
+      } else {
+        topItems[topItems.length-1].children.push(bm);
+      }
     });
 
-    // 串接
-    itemRefs.forEach((ref,i)=>{
-      const dict = context.lookupMaybe(ref, PDFLib.PDFDict);
-      if(!dict) return;
-      if(i>0) dict.set(PDFName.of('Prev'), itemRefs[i-1]);
-      if(i<itemRefs.length-1) dict.set(PDFName.of('Next'), itemRefs[i+1]);
+    // ── 建立所有 refs ────────────────────────────────────────────
+    const topRefs = topItems.map(it => makeItemRef(it.bm, rootRef));
+
+    topItems.forEach((it, ti)=>{
+      if(!it.children.length) return;
+      const parentRef  = topRefs[ti];
+      const parentDict = context.lookupMaybe(parentRef, PDFLib.PDFDict);
+      if(!parentDict) return;
+
+      const childRefs = it.children.map(c => makeItemRef(c, parentRef));
+      linkSiblings(childRefs, parentDict);
+
+      // Count 負數 = 預設收合；若想預設展開改成正數
+      parentDict.set(PDFName.of('Count'), PDFNumber.of(-childRefs.length));
     });
 
-    outlineRoot.set(PDFName.of('First'), itemRefs[0]);
-    outlineRoot.set(PDFName.of('Last'),  itemRefs[itemRefs.length-1]);
+    linkSiblings(topRefs, outlineRoot);
+
+    // root Count = 頂層項目數（正數）
+    outlineRoot.set(PDFName.of('Count'), PDFNumber.of(topRefs.length));
 
     doc.catalog.set(PDFName.of('Outlines'), rootRef);
   } catch(e){
-    console.warn('書籤設定失敗（不影響輸出）：',e);
+    console.warn('書籤設定失敗（不影響輸出）：', e);
   }
 }
 
