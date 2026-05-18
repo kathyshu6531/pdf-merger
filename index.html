@@ -640,6 +640,10 @@ async function appendFile(mergedDoc, item){
     try {
       src = await PDFDocument.load(buf, { ignoreEncryption: true });
       isProtected = src.context.trailer.get(PDFLib.PDFName.of('Encrypt')) !== undefined;
+      if(!isProtected){
+        const resKey = PDFLib.PDFName.of('Resources');
+        isProtected = src.getPages().some(p => !p.node.has(resKey));
+      }
     } catch(e) { isProtected = true; }
     if(isProtected){
       toast(`⚠️ 偵測到受保護的 PDF，改用備用渲染模式：${item.name}`, 'warn', 4000);
